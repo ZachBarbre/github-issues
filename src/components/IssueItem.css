@@ -6,6 +6,10 @@
     overflow: scroll;
 }
 
+.issueBody {
+    margin-top: 3%;
+}
+
 .issueCard img {
     max-width: 100%;
     height: auto;
