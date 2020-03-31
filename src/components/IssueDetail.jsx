@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
-import './IssueItem.css'
 import ReactMarkdown from 'react-markdown/with-html';
+import getData from '../utls/getData';
+import './IssueItem.css'
 
 class IssueDetail extends Component {
     state = {
         issue: ''
     }
 
-    getData = async (url) => {
-        const response = await fetch(url);
-        const data = await response.json();
-        return data;
-    }
+    // getData = async (url) => {
+    //     const response = await fetch(url);
+    //     const data = await response.json();
+    //     return data;
+    // }
 
     async componentDidMount(){
         const { issue_number } = this.props.match.params;
-        const issue = await this.getData(
+        const issue = await getData(
             `https://api.github.com/repos/facebook/create-react-app/issues/${issue_number}`
             );
         this.setState(

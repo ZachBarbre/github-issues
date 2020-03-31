@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import getData from '../utls/getData';
 import './IssueList.css'
 
 class IssueList extends Component {
@@ -6,14 +7,14 @@ class IssueList extends Component {
         issueArray: []
     }
 
-    getData = async (url) => {
-        const response = await fetch(url);
-        const data = await response.json();
-        return data;
-    }
+    // getData = async (url) => {
+    //     const response = await fetch(url);
+    //     const data = await response.json();
+    //     return data;
+    // }
 
     async componentDidMount(){
-        const issues = await this.getData('https://api.github.com/repos/facebook/create-react-app/issues');
+        const issues = await getData('https://api.github.com/repos/facebook/create-react-app/issues');
         this.setState(
             {issueArray: issues}
         )
@@ -31,7 +32,7 @@ class IssueList extends Component {
                         <a href={`/issue/${issue.number}`} className='link'>See Issue Details</a>
                     </div>
                 )
-                : <p>Loading Data</p>}
+                : <p> </p>}
             </div>
         )
     }
