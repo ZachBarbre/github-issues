@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 import ReactMarkdown from 'react-markdown/with-html';
 import getData from '../utls/getData';
-import './IssueItem.css'
+import './IssueDetail.css'
 
 class IssueDetail extends Component {
     state = {
         issue: ''
     }
-
-    // getData = async (url) => {
-    //     const response = await fetch(url);
-    //     const data = await response.json();
-    //     return data;
-    // }
 
     async componentDidMount(){
         const { issue_number } = this.props.match.params;
