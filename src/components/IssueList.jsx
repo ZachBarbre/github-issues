@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import getData from '../utls/getData';
 import './IssueList.css'
 
 const IssueList = () => {
     const [issues, setIssues] = useState([]);
 
-    const getIssues = async () => {
-        const issues = await getData('https://api.github.com/repos/facebook/create-react-app/issues');
-        setIssues(issues);
-    }
-
-    getIssues();
+    useEffect(() => {
+        const getIssues = async () => {
+            const issues = await getData('https://api.github.com/repos/facebook/create-react-app/issues');
+            setIssues(issues);
+        }
+    
+        getIssues();
+    }, [])
 
     return (
         <div className='issueList'>
